@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} {{category}} {% endblock %}
+{% block pagetitle %} {{category}} {% endblock %}
+{% block content %}
+
+		{% if products %}
+		<ul class="row-fluid">
+			{% for product in products %}
+			<li class="box product span4">
+				<h3>
+					<a href="/{{product.category}}/{{product.name|slugify}}/">{{product.name}}</a>
+				</h3>
+				<p> {{product.description}}</p>
+				<p class="price">{{product.price}}</p>
+			</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>No hay productos</p>
+		{% endif %}
+{% endblock %}

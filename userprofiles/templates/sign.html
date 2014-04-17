@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} {{sign_title}} {% endblock %}
+{% block content %}
+	<article class="sign form">
+		<a class="switchForm-btn" href="#">{{ change_to_form }}</a>
+		<div id="content-form">
+			<h2 class="form-title">{{sign_title}}</h2>
+			<h5>All inputs are required</h5>
+			<form action="" method="POST">
+
+				{% csrf_token %}
+				<span class="form-content">{{ form.as_p }}</span>
+				<input class="submit-btn"type="submit" value="{{sign_title}}">
+			</form>
+		</div>
+	</article>
+
+{% endblock %}

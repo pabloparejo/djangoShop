@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} {{product.name}} {% endblock %}
+{% block content %}
+	<article class="single-product">
+		<h2> {{ product.name }} </h2>
+		<figure class="image-product">		
+			<img src="{{MEDIA_URL}}{{product.multimedia}}" alt="">
+		</figure>
+		<div id="info">
+			<p> {{product.description}}</p>
+			<p class="price">{{product.price}} €</p>
+			<a href="#" id="{{product.category}}-{{product.pk}}" class="add-to-cart">
+				<span class="icon-cart"></span>
+			</a>
+		</div>
+		{% if product.preview %}
+			{{product.printPreview|safe}}
+		{% endif %}
+	</article>
+	<article class="related">
+		<h2 class="title">{{ related.title }}</h2>
+			<ul class="no-list-style product-list">
+				{% for p in related.products%}
+				<li class="related-product">
+					<a href="{% url 'product' p.category p.pk p.name|slugify %}" title="">
+						<h3 class="related-title">{{p.name}}</h3>
+					</a>
+					<a href="{% url 'product' p.category p.pk p.name|slugify %}" title="">
+						<figure class="image-item">
+							<img src="{{MEDIA_URL}}{{p.multimedia}}" alt="">
+						</figure>
+					</a>
+				</li>	
+				{% endfor %}
+			</ul>
+	</article>
+
+{% endblock %}

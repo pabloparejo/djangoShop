@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} {{page_title}} {% endblock %}
+{% block content %}
+	<article class="user-info">
+		<span class="header">
+			<h2 class="title">Hi, {{user.username}}!</h2>
+			<a class="logout-btn" href="/logout">Log out</a>
+		</span>
+		<ul class="no-list-style user-data">
+			<li>
+				<p class="left inline">Username:</p>
+				<p class="right">{{user.username}}</p>
+			</li>
+			<li>
+				<p class="left inline">Email:</p>
+				<p class="right">{{user.email}}</p>
+			</li>
+			<li>
+				<p class="left inline">Last login:</p>
+				<p class="right">{{user.last_login|date:"SHORT_DATE_FORMAT"}}</p>
+			</li>
+			<li>
+				<p class="left inline">Member since:</p>
+				<p class="right">{{user.date_joined|date:"SHORT_DATE_FORMAT"}}</p>
+			</li>
+		</ul>
+	</article>
+
+	<article class="user-orders">
+		<h2>Your recent orders</h2>
+		{% if recentOrders %}
+			{% for order in recentOrders %}
+				<ul class="no-list-style order-item">
+					<li>{{order}}</li>
+					<li>{{order.total_amount}} €</li>
+					<li>{{order.order_date|date:"SHORT_DATE_FORMAT"}}</li>
+				</ul>
+			{% endfor %}
+		{% else %}
+			<p> You haven't bought yet! </p>
+		{% endif %}
+	</article>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} {{page_title}} {% endblock %}
+{% block content %}
+	<article class="form">
+		<div id="content-form">
+			<h2 class="form-title">{{page_title}}</h2>
+			<h5>All inputs are required</h5>
+			<form action="" method="POST" class="checkout-form">
+
+				{% csrf_token %}
+				<span class="form-content">{{ form.as_p }}</span>
+				<input class="submit-btn"type="submit" value="Submit">
+			</form>
+		</div>
+	</article>
+
+{% endblock %}

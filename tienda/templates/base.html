@@ -1,0 +1,64 @@
+{% load dajaxice_templatetags %}
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+	<title> Things - {% block title %} {% endblock %} </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width"/>
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/normalizer.css">
+	{% dajaxice_js_import %}
+</head>
+<body class="{{page_class}}">
+	<header class="row-fluid" id="main-nav">
+			<nav class="navbar" role="navigation">
+				<a href="/" class="brand">Things</a></li>
+				<ul class="no-list-style">
+					<li id="home"> 
+						<a href="/">
+							<span class="icon-home"></span>
+							<span class="hide-mobile"> Home</span></a>
+					</li>
+					<li id="bikes"> <a href="/bikes">Bikes</a></li>
+					<li id="books"> <a href="/books">Books</a></li>
+					<li id="music"> <a href="/music">Music</a></li>
+				</ul>
+				<ul class="nav-icons no-list-style">
+					<li id="search"> <a href="#"><span class="icon-search"></span></a></li>
+					<li id="cart"> <a id="#cart-link" href="#"><span class="icon-cart"></span></a></li>
+					<li id="sign"> <a href="/sign"><span class="icon-user"></span></a></li>
+				</ul>
+			</nav>
+			<form action="/search" method="GET" id="search-bar">
+				<!-- <input type="text" x-webkit-speech class="search-query"  placeholder="Search"  name="q" value="{{ query|escape }}" /> -->
+				<input autofocus type="text" class="search-query"  placeholder="Search"  name="q" value="{{ query|escape }}" />
+				<button type="submit" class="btn" value="search"><span class="icon-search"></span></button>
+			</form>
+	</header>
+	<article id="cart-box" class="is_empty hide">
+		<div class="cart-buttons">
+			<a href="#" id="close-cart"><span class="icon-cart"></span> Close cart</a>
+			<a href="/checkout" id="checkout"><span class="icon-checkmark"> </span> Checkout</a>
+		</div>
+		<p class="empty-flag"> Your cart is empty </p>
+		<div class="cart-product hide delete" id="">
+			<p class="quantity"></p>
+			<a class="title" href=""></a>
+			<a class="delete-btn" href="#"><span class="icon-delete"></span></a>
+			<p class="price"></p>
+		</div>
+	</article>
+	<section id="content">
+		{% block content %}{% endblock %}
+	</section>
+	<footer>
+		<p> Pablo Parejo Camacho </p>
+		<p class="copy"> Things &copy;2014 </p>
+		<a id="admin" href="/admin"> <span class="icon-lock"> Admin </span></a>
+	</footer>
+	<script src='{{STATIC_URL}}js/jquery.js'></script>
+	<script src='{{STATIC_URL}}js/code.js'>
+	</script>
+	<script type="text/javascript">{% block script %} {% endblock %}</script>
+</body>
+</html>

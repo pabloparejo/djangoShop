@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} {{page_title}} {% endblock %}
+{% block content %}
+	<article class="user-info">
+		<span class="header">
+			<h2 class="title">Thanks for your order, {{user.username}}!</h2>
+		</span>
+		<ul class="no-list-style user-data">
+			<li>
+				<p class="left inline">Name and First name:</p>
+				<p class="right">{{order.name}} {{order.first_name}}</p>
+			</li>
+			<li>
+				<p class="left inline">Address:</p>
+				<p class="right">{{order.address}}</p>
+			</li>
+			<li>
+				<p class="left inline">Payment:</p>
+				<p class="right">{{order.payment}}</p>
+			</li>
+			<li>
+				<p class="left inline">Total amount:</p>
+				<p class="right">{{order.total_amount}} €</p>
+			</li>
+
+		</ul>
+		<span class="order-products">
+			<h3>Products</h3>
+			<table>
+				<tr>
+					<td>Product</td>
+					<td>Price</td>
+					<td>Quantity</td>
+				</tr>
+				{% for product in products %}
+				<tr>
+					<td>{{product.product}}</td>
+					<td>{{product.product.price}} €</td>
+					<td>{{product.quantity}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</span>
+	</article>
+
+{% endblock %}

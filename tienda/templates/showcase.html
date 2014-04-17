@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %} {{page_title|capfirst}} {% endblock %}
+{% block content %}
+
+	{% if search.error %}
+	<article class="search-error">
+		<h2>
+			Ooops! Nothing found there.
+		</h2>
+		{% if search.hasQuery %}
+			<h4 class="subtitle">But we have other popular products here!</h4>
+		{% else %}
+			<h3 class="subtitle">Try adding some words inside the search box</h3>
+		{% endif %}
+	</article>
+	{% endif %}
+
+	{% for section in product_sections%}
+		{% if section.products %}
+		<article class="{{section.name}} products">
+				<h2 class="article-title"> {{section.name|capfirst}} </h2>
+				<div class='search-results'>
+				{% if search.error %}
+					<h3>
+						Popular products
+					</h3>
+				{% else %}
+					<h3>
+						{% with count=section.products|length %}
+						{{count}} item{{count|pluralize}}
+						{% endwith %}
+					</h3>
+					{% if search %}
+						<p> Matching '{{page_title}}'</p>
+					{% endif %}
+
+				{% endif %}
+				</div>
+				<ul class="no-list-style product-list">
+					{% for product in section.products %}
+					<li class="product" id="{{product.category}}-{{product.pk}}">
+						<h3 class="product-title">
+							<a href="{% url 'product' product.category product.pk product.name|slugify %}">{{product.name}}</a>
+						</h3>
+						<div>
+							{% if product.multimedia != "" %}
+							<a href="{% url 'product' product.category product.pk product.name|slugify %}">
+								<figure class='image-item'>
+									<img src="{{MEDIA_URL}}{{product.multimedia}}"/>
+								</figure>
+							</a>
+							{% endif %}
+							<p> {{product.description|capfirst|truncatechars:35}}</p>
+							<p class="price">{{product.price}} €</p>
+						</div>
+						{% if page_title == 'home' %}
+							<a class="category" href="{% url 'category' product.category %}">{{product.category|capfirst}}</a>
+						{% endif %}
+							<a href="#" id="{{product.category}}-{{product.pk}}" class="add-to-cart">
+								<span class="icon-cart"></span>
+							</a>
+					</li>
+					{% endfor %}
+				</ul>
+		</article>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+{% block script %}
+	{% if search %}
+		{% if not search.hasQuery %}
+			
+				$(document).ready(function(){
+					$('#search-bar').slideToggle();
+				})
+			
+		{% endif %}
+	{% endif %}
+{% endblock %}
