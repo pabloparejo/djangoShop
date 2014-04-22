@@ -8,16 +8,26 @@ The project has no database, to use it you should type `$ ./manage.py syncdb`
 
 You can access the demo on heroku:
 
->http://pabloparejo.herokuapp.com
+http://pabloparejo.herokuapp.com
 
-want to try the admin?
-    
-Just type :
-            
-        http://pabloparejo.herokuapp.com/admin
-        
-        user = admin
-        pass = admin
+
+Features
+--------
+
+
+|Popular HTML5 features|Used?|
+|----|-----|
+|Canvas| No|
+|CSS3| Yes|
+|GeoLocation| Yes|
+|Local Storage| Yes|
+|Media Elements| Yes|
+|Semantic Elements| Yes|
+|Session Storage| No|
+|Web Sokets| No|
+|Web Workers| No|
+
+
 
 
 Product popularity:
@@ -31,3 +41,4 @@ Gets bigger when:
 Reduces when:
 
     1) You don't watch it
+
