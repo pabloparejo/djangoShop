@@ -18,7 +18,7 @@ def signin(request):
 	change_to_form = "Register"
 	page_class = 'login'
 	response = render(request, 'sign.html', locals())
-	response.set_cookie('form', "signin")
+	response.set_cookie('form', 'signin')
 	return response
 
 

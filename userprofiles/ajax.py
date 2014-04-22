@@ -9,7 +9,6 @@ from main.forms import OrderForm
 @dajaxice_register
 def switchForm(request):
 	if request.COOKIES.has_key('form'):
-		print request.COOKIES['form']
 		if request.COOKIES['form'] == "signup":
 			form = EmailAuthenticationForm()
 			html = form.as_p()
