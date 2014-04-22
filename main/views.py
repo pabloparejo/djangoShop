@@ -52,19 +52,19 @@ def saveOrderProducts(order_content, order):
 
 		if category == 'bikes':
 			bike_obj = Bike.objects.get(pk=p_id)
-			bike_obj.popularity += (1*quantity)
+			bike_obj.popularity += quantity
 			bike_obj.save()
 			prod_order = order.bikeorder_set.create(product=bike_obj,
 													quantity=quantity)
 		elif category == 'books':
 			book_obj = Book.objects.get(pk=p_id)
-			book_obj.popularity += (1*quantity)
+			book_obj.popularity += quantity
 			book_obj.save()
 			prod_order = order.bookorder_set.create(product=book_obj,
 													quantity=quantity)
 		elif category == 'music':
 			music_obj = Music.objects.get(pk=p_id)
-			music_obj.popularity += (1*quantity)
+			music_obj.popularity += quantity
 			music_obj.save()
 			prod_order = order.musicorder_set.create(	product=music_obj,
 														quantity=quantity)

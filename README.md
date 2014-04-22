@@ -10,13 +10,14 @@ You can access the demo on heroku:
 
 >http://pabloparejo.herokuapp.com
 
-> want to try the admin?
-    Just type :
-        ```http://pabloparejo.herokuapp.com/admin
+want to try the admin?
+    
+Just type :
+            
+        http://pabloparejo.herokuapp.com/admin
         
-            user = admin
-            pass = admin
-        ```
+        user = admin
+        pass = admin
 
 
 Product popularity:
