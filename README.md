@@ -1,10 +1,7 @@
 djangoShop
 ==========
 
-This is a Django shop that sells bikes, books and music. [Expanded University Project]
-
-The project has no database, to use it you should type `$ ./manage.py syncdb`
-
+This is a Django shop that sells bikes, books and music. It began as an university project but I decided to expand it and use almost all the html5 features that we was taught.
 
 You can access the demo on heroku:
 
