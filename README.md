@@ -11,7 +11,7 @@ You can access the demo on heroku:
 http://pabloparejo.herokuapp.com
 
 
-Features
+HTML5 Features
 --------
 
 
