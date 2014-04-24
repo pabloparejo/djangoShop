@@ -7,6 +7,9 @@ You can access the demo on heroku:
 
 http://pabloparejo.herokuapp.com
 
+> Due to the Heroku's free plan, multimedia is removed after an hour of inactivity.
+> Soon, I'll try to host multimedia in my Dropbox account...
+
 
 HTML5 Features
 --------
