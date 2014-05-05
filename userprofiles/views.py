@@ -7,12 +7,14 @@ from django.http import HttpResponseRedirect
 from .forms import UserProfileForm, EmailAuthenticationForm
 from main.models import Order
 
-def signin(request):
-	form = EmailAuthenticationForm(request.POST or None)
+def signin(request, form):
+
+	next = request.GET.get('next', '')
+
 	sign_title = "Log in"
 	if form.is_valid():
 		login(request, form.get_user())
-		response = HttpResponseRedirect('/')
+		response = HttpResponseRedirect(next)
 		response.delete_cookie('form')
 		return response
 	change_to_form = "Register"
@@ -23,7 +25,6 @@ def signin(request):
 
 
 def signDispatcher(request):
-
 	if 	request.user.is_authenticated():
 		user = request.user
 		recentOrders = Order.objects.filter(user=user)
@@ -31,16 +32,14 @@ def signDispatcher(request):
 		page_title = user.username
 		return render(request, 'user_info.html', locals())
 	else:
-		form = EmailAuthenticationForm(request.POST)
+		form = EmailAuthenticationForm(request.POST or None)
 		if form.is_valid():
-			login(request, form.get_user())
-			response = HttpResponseRedirect('/')
-			response.set_cookie('hasRegistered', True)
-			response.delete_cookie('form')
-			return response
+			return signin(request, form)
 		if request.COOKIES.has_key('hasRegistered'):
 			if request.COOKIES['hasRegistered'] == "True":
-				return signin(request)
+				print 'primer if'
+				return signin(request, form)
+
 		else:
 			page_class = 'signin'
 			form = UserProfileForm(request.POST or None)

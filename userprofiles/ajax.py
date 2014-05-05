@@ -26,10 +26,3 @@ def switchForm(request):
 			'cookie': 	cookie,
 			'title': 	title}
 	return simplejson.dumps(data)
-
-@dajaxice_register
-def getOrderForm(request):
-	form = OrderForm()
-	html = form.as_p()
-
-	return simplejson.dumps({'content': html})

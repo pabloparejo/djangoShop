@@ -87,7 +87,7 @@ def checkOut(request):
 			order = form.save(commit=False)
 			order.user = user
 			order.total_amount = 0
-			order.save()
+			order.save()   #We have to save the order before calculate ammount
 			order.total_amount = saveOrderProducts(order_content, order)
 			order.save()
 

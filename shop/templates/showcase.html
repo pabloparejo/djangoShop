@@ -2,7 +2,7 @@
 {% block title %} {{page_title|capfirst}} {% endblock %}
 {% block content %}
 
-	{% if search.error %}
+	{% if search.error %} {# if there is not search, search.error == False #}
 	<article class="search-error">
 		<h2>
 			Ooops! Nothing found there.

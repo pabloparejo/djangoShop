@@ -10,12 +10,15 @@ class Bike(models.Model):
 	category = models.CharField(default="bikes", max_length=40)
 	description = models.CharField(max_length=1000)
 	featured = models.BooleanField(default=False)
-	multimedia = models.ImageField(upload_to="img", blank=True, verbose_name='Product Image')
+	multimedia = models.ImageField(	upload_to="img", blank=True, \
+									verbose_name='Product Image')
 	name = models.CharField(max_length=100)
 	popularity = models.IntegerField(default=0)
 	price = models.DecimalField(max_digits=6, decimal_places=2)
-	preview = models.FileField(upload_to="videos", blank=True, verbose_name='Video')
-	pub_date = models.DateTimeField(auto_now_add=True, verbose_name='date published')
+	preview = models.FileField(	upload_to="videos", blank=True, \
+								verbose_name='Video')
+	pub_date = models.DateTimeField(auto_now_add=True, \
+									verbose_name='date published')
 
 	def __unicode__(self):
 		return self.name
@@ -24,7 +27,8 @@ class Bike(models.Model):
 		allow_tags = True
 		html = "<div class='product-preview video'>\
 					<video class='video-item' controls>\
-						<source src='" + self.preview.url +"' type='video/mp4'>\
+						<source src='" + self.preview.url + \
+						"' type='video/mp4'>\
 						Your browser does not support the video tag.\
 					</video>\
 				</div>"

@@ -59,7 +59,6 @@ class OrderAdmin(admin.ModelAdmin):
 		('Order info',	{	'fields': ['name', 'first_name',\
 						 	'total_amount', 'payment',]}),
 		('Address',	{'fields': ['street', 'postal_code', 'city']}),
-		#('Items', {'fields': ['bikes', 'books', 'music']}),
 	]
 	inlines = [BikeInline, BookInline, MusicInline,]
 	list_display = ('__unicode__', 'name', 'first_name',\

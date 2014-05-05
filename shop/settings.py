@@ -1,6 +1,6 @@
 #encoding:utf-8
 """
-Django settings for tienda project.
+Django settings for shop project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROUTE = os.path.dirname(os.path.realpath(__file__))
+
 MEDIA_ROOT = os.path.join(PROJECT_ROUTE, 'upload')
 MEDIA_URL = '/upload/'
 
@@ -55,9 +56,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'tienda.urls'
+ROOT_URLCONF = 'shop.urls'
 
-WSGI_APPLICATION = 'tienda.wsgi.application'
+WSGI_APPLICATION = 'shop.wsgi.application'
 
 
 # Database
@@ -66,7 +67,7 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'tienda.db',
+        'NAME': 'shop.db',
     }
 }
 
@@ -129,4 +130,5 @@ GRAPPELLI_ADMIN_TITLE = "Things"
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'userprofiles.backends.EmailBackend',)
+    'userprofiles.backends.EmailBackend',
+)
