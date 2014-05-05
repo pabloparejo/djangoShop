@@ -57,5 +57,6 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+#media files
 media/
 shop/upload
