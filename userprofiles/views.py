@@ -50,7 +50,7 @@ def signDispatcher(request):
 			if form.is_valid():
 				form.save()
 				request.POST = "";
-				response = signin(request)
+				response = signin(request, form)
 				response.set_cookie('hasRegistered', True)
 
 

@@ -109,7 +109,6 @@ function saveProduct(product){
 }
 
 function itemFromId(p_id){
-	console.log('AQUI HAY QUE EDITAR PARA QUE FunCIONE EN VISTA PRODUCT')
 	var product 	= $('#' + p_id),
 		p_title 	= product.children('.product-title').children('a'),
 		price 		= product.children('div').children('.price');
