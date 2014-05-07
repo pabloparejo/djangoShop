@@ -30,14 +30,15 @@ def signDispatcher(request):
 		recentOrders = Order.objects.filter(user=user)
 		recentOrders = recentOrders.order_by('-order_date')[:6]
 		page_title = user.username
-		return render(request, 'user_info.html', locals())
+		response = render(request, 'user_info.html', locals())
+		response.set_cookie('hasRegistered', True)
+		return response
 	else:
 		form = EmailAuthenticationForm(request.POST or None)
 		if form.is_valid():
 			return signin(request, form)
 		if request.COOKIES.has_key('hasRegistered'):
 			if request.COOKIES['hasRegistered'] == "True":
-				print 'primer if'
 				return signin(request, form)
 
 		else:
@@ -50,7 +51,7 @@ def signDispatcher(request):
 			if form.is_valid():
 				form.save()
 				request.POST = "";
-				response = signin(request, form)
+				response = HttpResponseRedirect('sign')
 				response.set_cookie('hasRegistered', True)
 
 
